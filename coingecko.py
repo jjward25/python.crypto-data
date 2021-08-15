@@ -12,18 +12,18 @@ input_id='bitcoin'
 ############## TOKEN DATA ##################
 ####################################
 
-# list of all supported coins id, name and symbol
+##### list of all supported coins id, name and symbol
 #print(cg.get_coins_list())
 all_coins_df = pd.DataFrame(cg.get_coins_list())
 #print(all_coins_dfl)
 
-#** all supported coins price, market cap, volume and market related data
+##### all supported coins price, market cap, volume and market related data
 #print(cg.get_coins_markets(vs_currency='usd'))
 markets_df = pd.DataFrame(cg.get_coins_markets(vs_currency='usd'))
 #print(markets_df)
 
 
-#** token profile data
+##### token profile data
 #print(cg.get_coin_by_id(id='bitcoin', localization='false'))
 ticker_fields= ["base","target","last","volume","trust_score","bid_ask_spread_percentage","timestamp","last_traded_at"]
 bitfinex_data = pd.json_normalize(cg.get_coin_by_id(id=input_id, localization='false'))['tickers'][0][0]
@@ -45,22 +45,21 @@ coin_fields = ["id", "symbol","name","asset_platform_id","block_time_in_minutes"
 coin_df = pd.json_normalize(cg.get_coin_by_id(id=input_id, localization='false'))[coin_fields]
 coin_df.to_csv(r'C:\Users\Josep\OneDrive\Desktop\Coding\python.crypto-data\coin_details_id.csv')
 
-#** Historical mkt data: Minutely data will be used for duration within 1 day, 
-# Hourly data will be used for duration between 1 day and 90 days, 
-# Daily data will be used for duration above 90 days.
-# Returns as date in unix format, price
+##### Historical mkt data: Minutely data will be used for duration within 1 day, Hourly data will be used for duration between 1 day and 90 days, 
+##### Daily data will be used for duration above 90 days. Returns as date in unix format, price
 price_df = pd.DataFrame(cg.get_coin_market_chart_by_id(id=input_id, vs_currency='usd', days=365))
 #print(price_df)
-# pull price data within a range
-price_range_df = cg.get_coin_market_chart_range_by_id(id=input_id, vs_currency='usd', from_timestamp='1392577232', to_timestamp='1422577232')
+
+#### pull price data within a range
+price_range_df = pd.DataFrame(cg.get_coin_market_chart_range_by_id(id=input_id, vs_currency='usd', from_timestamp='1392577232', to_timestamp='1422577232'))
 #print(price_range_df)
 
-## Token status updates
-coin_status_df = cg.get_coin_status_updates_by_id(id=input_id)
+##### Token status updates
+coin_status_df = pd.DataFrame(cg.get_coin_status_updates_by_id(id=input_id))
 #print(coin_status_df)
 
-#** Open High Low Close -- only works for single day, candles are 30 minutes for 1-2 day pulls
-ohlc_df = cg.get_coin_ohlc_by_id(id=input_id,vs_currency='usd',days=1)
+##### Open High Low Close -- only works for single day, candles are 30 minutes for 1-2 day pulls
+ohlc_df = pd.DataFrame(cg.get_coin_ohlc_by_id(id=input_id,vs_currency='usd',days=1))
 #print(ohlc_df)
 
 
@@ -68,9 +67,13 @@ ohlc_df = cg.get_coin_ohlc_by_id(id=input_id,vs_currency='usd',days=1)
 ############## EXCHANGE DATA ##################
 ####################################
 
-# Exchange lists and derivatives exchange lists, and the list of all exchange names and IDs
-#print(cg.get_exchanges_list())
-#print(cg.get_derivatives_exchanges_list())
+##### Exchange lists and derivatives exchange lists, and the list of all exchange names and IDs (REFERENCE TABLE)
+exchanges_df = pd.DataFrame(cg.get_exchanges_list())
+#print(exchanges_df)
+
+derivatives_exchanges_df = pd.DataFrame(cg.get_derivatives_exchanges_list())
+#print(derivatives_exchanges_df)
+
 #**print(cg.get_exchanges_id_name_list())  ## exchange volume in BTC abd tio 100 tickers only
 #print(cg.get_exchanges_tickers_by_id(id='gdax')) # all tickers on the exchange, paginated w 100 per page
 #**print(cg.get_exchanges_volume_chart_by_id(id='gdax', days=3)) $$ exchange volume for last X days
