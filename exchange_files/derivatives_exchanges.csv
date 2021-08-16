@@ -1,0 +1,57 @@
+,id,name
+0,binance_futures,Binance (Futures)
+1,ftx,FTX (Derivatives)
+2,bybit,Bybit
+3,okex_swap,OKEx (Futures)
+4,huobi_dm,Huobi Futures
+5,deribit,Deribit
+6,bitfinex_futures,Bitfinex (Futures)
+7,kumex,KuCoin Futures
+8,bitmex,BitMEX
+9,mxc_futures,MEXC Global (Futures)
+10,bitget_futures,Bitget Futures
+11,gate_futures,Gate.io (Futures)
+12,btse_futures,BTSE (Futures)
+13,phemex_futures,Phemex (Futures)
+14,zbg_futures,ZBG Futures
+15,prime_xbt,Prime XBT
+16,mycoinstory,MyCoinStory
+17,bitz_futures,BitZ (Futures)
+18,bitforex_futures,Bitforex (Futures)
+19,dydx_perpetual,dYdX Perpetual
+20,kraken_futures,Kraken (Futures)
+21,c_trade,C-Trade
+22,coinflex_futures,CoinFLEX (Futures)
+23,perpetual_protocol,Perpetual Protocol
+24,basefex,BaseFEX
+25,bitmax_futures,AscendEX  (BitMax) (Futures)
+26,poloniex_futures,Poloniex Futures
+27,acdx_futures,ACDX Futures
+28,bit_com_futures,Bit.com
+29,aax_futures,AAX Futures
+30,bigone_futures,BigONE Futures
+31,alpha_five,Alpha5
+32,btcmex,BTCMEX
+33,gmo_japan_futures,GMO Japan (Futures)
+34,cme_futures,CME Bitcoin Futures
+35,jex_futures,Binance JEX (Futures)
+36,hopex,Hopex
+37,biki_futures,Biki (Futures)
+38,liquid_derivatives,Liquid Perpetuals
+39,futureswap,Futureswap
+40,bitflyer_futures,Bitflyer (Futures)
+41,bakkt,Bakkt
+42,fmex,FMex
+43,bithumb_futures,Bithumb (Futures)
+44,mcdex,MCDEX
+45,crypto_com_futures,Crypto.com Exchange (Futures)
+46,leverj,Leverj
+47,dydx_perpetual_l1,dYdX Perpetual (L1)
+48,cointiger_futures,CoinTiger (Futures)
+49,bibox_futures,Bibox (Futures)
+50,bitmart_futures,Bitmart Futures
+51,duedex,DueDEX
+52,delta_futures,Delta Exchange (Futures)
+53,stormgain_futures,Stormgain Futures
+54,equos_perpetual,EQONEX (Perpetual)
+55,hbtc_futures,BHEX (Futures)

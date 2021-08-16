@@ -13,13 +13,12 @@ exchange_id = 'gdax'
 ############## Derivatives DATA ##################
 ####################################
 # All derivatives tickers and exchanges
-derivatives_df = pd.DataFrame(cg.get_derivatives())
+#derivatives_df = pd.DataFrame(cg.get_derivatives())
 #print(derivatives_df)
 
-exchange_market_data_df = pd.DataFrame(cg.get_derivatives_exchanges()) # all derivatives
+#exchange_market_data_df = pd.DataFrame(cg.get_derivatives_exchanges()) # all derivatives
 #print(exchange_market_data_df)
 
-
 # Derivative exchange data (24hr volume, open interest, # of pairs)
-#derivative_by_exhange_df = pd.DataFrame(cg.get_derivatives_exchanges_by_id(id='bitmex')) ##must be an exchange w derivatives, like bitmex
-#print(derivative_by_exhange_df)
+derivative_by_exhange_df = pd.DataFrame(cg.get_derivatives_exchanges_by_id(id='bitmex'), index=[0]) ##must be an exchange w derivatives, like bitmex
+print(derivative_by_exhange_df)
