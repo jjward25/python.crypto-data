@@ -14,11 +14,13 @@ exchange_id = 'gdax'
 ####################################
 # All derivatives tickers and exchanges
 #derivatives_df = pd.DataFrame(cg.get_derivatives())
+#derivatives_df.to_csv(r'C:\Users\Josep\OneDrive\Desktop\Coding\python.crypto-data\derivatives_files\derivatives_list.csv')
 #print(derivatives_df)
 
 #exchange_market_data_df = pd.DataFrame(cg.get_derivatives_exchanges()) # all derivatives
+#exchange_market_data_df.to_csv(r'C:\Users\Josep\OneDrive\Desktop\Coding\python.crypto-data\derivatives_files\derivatives_exchange_data.csv')
 #print(exchange_market_data_df)
 
-# Derivative exchange data (24hr volume, open interest, # of pairs)
-derivative_by_exhange_df = pd.DataFrame(cg.get_derivatives_exchanges_by_id(id='bitmex'), index=[0]) ##must be an exchange w derivatives, like bitmex
-print(derivative_by_exhange_df)
+#derivatives_exchanges_df = pd.DataFrame(cg.get_derivatives_exchanges_list())
+#derivatives_exchanges_df.to_csv(r'C:\Users\Josep\OneDrive\Desktop\Coding\python.crypto-data\derivatives_files\derivatives_exchanges.csv')
+#print(derivatives_exchanges_df)

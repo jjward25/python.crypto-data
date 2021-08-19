@@ -1,0 +1,9 @@
+Exchanges is the daily trade volume of the top 100 exchanges by trust score
+
+Exchange volume returns the daily volume for a given exchange for a given number of days
+
+Exchange ID is the full list of exchanges (names & ids)
+
+
+"Can use the exchange volume to get historicals for exchanges.  Probably only need the top 10 or so, then maybe sum the rest"
+After gathering historicals can just pull from exchanges every day

@@ -5,8 +5,8 @@
 3,okex_swap,OKEx (Futures)
 4,huobi_dm,Huobi Futures
 5,deribit,Deribit
-6,bitfinex_futures,Bitfinex (Futures)
-7,kumex,KuCoin Futures
+6,kumex,KuCoin Futures
+7,bitfinex_futures,Bitfinex (Futures)
 8,bitmex,BitMEX
 9,mxc_futures,MEXC Global (Futures)
 10,bitget_futures,Bitget Futures
@@ -15,8 +15,8 @@
 13,phemex_futures,Phemex (Futures)
 14,zbg_futures,ZBG Futures
 15,prime_xbt,Prime XBT
-16,mycoinstory,MyCoinStory
-17,bitz_futures,BitZ (Futures)
+16,bitz_futures,BitZ (Futures)
+17,mycoinstory,MyCoinStory
 18,bitforex_futures,Bitforex (Futures)
 19,dydx_perpetual,dYdX Perpetual
 20,kraken_futures,Kraken (Futures)
@@ -25,10 +25,10 @@
 23,perpetual_protocol,Perpetual Protocol
 24,basefex,BaseFEX
 25,bitmax_futures,AscendEX  (BitMax) (Futures)
-26,poloniex_futures,Poloniex Futures
-27,acdx_futures,ACDX Futures
+26,aax_futures,AAX Futures
+27,poloniex_futures,Poloniex Futures
 28,bit_com_futures,Bit.com
-29,aax_futures,AAX Futures
+29,acdx_futures,ACDX Futures
 30,bigone_futures,BigONE Futures
 31,alpha_five,Alpha5
 32,btcmex,BTCMEX

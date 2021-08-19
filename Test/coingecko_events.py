@@ -27,8 +27,8 @@ exchange_id = 'gdax'
 #print(cg.get_events_countries())
 
 #####*** Trending coins (top 7 last 24 hours)
-trending_df = cg.get_search_trending()
-print(trending_df)
+#trending_df = cg.get_search_trending()
+#print(trending_df)
 
 
 ###### Crypto Industry Data (active cryptocurrencies, upcoming ICOs, total mkt cap)
