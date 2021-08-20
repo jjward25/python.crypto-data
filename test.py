@@ -8,7 +8,7 @@ import datetime
 any50 = requests.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1').json()  ## pulls first 250 by market cap (limited to 250 per page)
 
 any50 = []
-for token in top250:
+for token in any50:
     any50.append(token)
 dataset = pd.DataFrame(any50)
 #dataset.to_excel('top500.xlsx',sheet_name='top500',index=True)
@@ -27,11 +27,11 @@ for token in token_list:
     volumes = pd.DataFrame(historical_request['total_volumes'], columns=['date','total_volumes'])
 
     append_df = pd.DataFrame(columns=['id'])
-    append_df.insert(1,'price_date', prices['date'])
+    append_df.insert(1,'price_date', datetime.fromtimestamp(prices['date']))
     append_df.insert(2,'prices', prices['prices'])
-    append_df.insert(3,'cap_date', mkt_caps['date'])
+    append_df.insert(3,'cap_date', datetime.fromtimestamp(mkt_caps['date']))
     append_df.insert(4,'market_caps', mkt_caps['market_caps'])
-    append_df.insert(5,'vol_date', volumes['date'])
+    append_df.insert(5,'vol_date', datetime.fromtimestamp(volumes['date']))
     append_df.insert(6,'total_volumes', volumes['total_volumes'])
     append_df['id'].fillna(token.strip("'<>() ").replace('\'', '\"'),inplace=True)
     print(append_df)

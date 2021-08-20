@@ -5,10 +5,10 @@ from pandas import ExcelWriter
 import datetime
 
 ## START: Top 50 Tokens Daily Market Metrics: to edit the # pulled, change the per_page and page= values in the links
-any50 = requests.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1').json()  ## pulls first 250 by market cap (limited to 250 per page)
+request = requests.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1').json()  ## pulls first 250 by market cap (limited to 250 per page)
 
 any50 = []
-for token in top250:
+for token in request:
     any50.append(token)
 dataset = pd.DataFrame(any50)
 #dataset.to_excel('top500.xlsx',sheet_name='top500',index=True)
@@ -34,7 +34,13 @@ for token in token_list:
     append_df.insert(5,'vol_date', volumes['date'])
     append_df.insert(6,'total_volumes', volumes['total_volumes'])
     append_df['id'].fillna(token.strip("'<>() ").replace('\'', '\"'),inplace=True)
+
+    append_df['price_date'] = pd.to_datetime(append_df['price_date'],unit='ms')
+    append_df['cap_date'] = pd.to_datetime(append_df['cap_date'],unit='ms')
+    append_df['vol_date'] = pd.to_datetime(append_df['vol_date'],unit='ms')
+    
     print(append_df)
+    
     historicals=historicals.append(append_df)
 
 print(historicals)
