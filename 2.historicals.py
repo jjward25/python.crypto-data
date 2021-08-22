@@ -1,8 +1,7 @@
 import pandas as pd
-from pandas.core.frame import DataFrame
 import requests
-from pandas import ExcelWriter
 import datetime
+import openpyxl
 
 ## START: Top 50 Tokens Daily Market Metrics: to edit the # pulled, change the per_page and page= values in the links
 request = requests.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1').json()  ## pulls first 250 by market cap (limited to 250 per page)
@@ -21,7 +20,7 @@ token_list = dataset['id'] ## List of token IDs to loop through pulled from the 
 historicals = pd.DataFrame(columns=['id','price_date','prices','cap_date','market_caps','vol_date','total_volumes'])
 
 for token in token_list:
-    historical_request = requests.get(f'https://api.coingecko.com/api/v3/coins/{token}/market_chart/range?vs_currency=usd&from=1483254000&to=1629352800').json()
+    historical_request = requests.get(f'https://api.coingecko.com/api/v3/coins/{token}/market_chart/range?vs_currency=usd&from=1546326000&to=1629352800').json()
     prices = pd.DataFrame(historical_request['prices'], columns=['date','prices'])
     mkt_caps = pd.DataFrame(historical_request['market_caps'], columns=['date','market_caps'])
     volumes = pd.DataFrame(historical_request['total_volumes'], columns=['date','total_volumes'])
@@ -44,4 +43,7 @@ for token in token_list:
     historicals=historicals.append(append_df)
 
 print(historicals)
-historicals.to_excel('historicals.xlsx',sheet_name='historicals',index=True)
+
+with pd.ExcelWriter('crypto_data.xlsx', engine='openpyxl') as writer:
+    writer.book = openpyxl.load_workbook('crypto_data.xlsx')
+    historicals.to_excel(writer, sheet_name='token_historicals')

@@ -50,22 +50,22 @@ coin_fields = ["id", "symbol","name","asset_platform_id","block_time_in_minutes"
                 "developer_data.forks","developer_data.stars","developer_data.subscribers","developer_data.total_issues","developer_data.closed_issues","developer_data.pull_requests_merged", ## developer data
                 "developer_data.pull_request_contributors","developer_data.commit_count_4_weeks","status_updates"] ## developer data
 coin_df = pd.json_normalize(cg.get_coin_by_id(id=input_id, localization='false'))[coin_fields]
-coin_df.to_excel(writer,sheet_name='coin_detail')
-#print(coin_df)
+#coin_df.to_excel(writer,sheet_name='coin_detail')
+print(coin_df)
 
 ##### Historical mkt data: Minutely data will be used for duration within 1 day, Hourly data will be used for duration between 1 day and 90 days, 
 ##### Daily data will be used for duration above 90 days. Returns as date in unix format, price
 
-coin_list_500 = []
+#coin_list_500 = []
 
-price_df = pd.DataFrame()
+#price_df = pd.DataFrame()
 
-for c in coin_list_500:
+#for c in coin_list_500:
     
-    price_df = pd.DataFrame(cg.get_coin_market_chart_by_id(id=input_id, vs_currency='usd', days=365))
+#    price_df = pd.DataFrame(cg.get_coin_market_chart_by_id(id=input_id, vs_currency='usd', days=365))
 
 #price_df.to_excel(writer,sheet_name='price_history')
-print(price_df)
+#print(price_df)
 
 #### pull price data within a range
 #price_range_df = pd.DataFrame(cg.get_coin_market_chart_range_by_id(id=input_id, vs_currency='usd', from_timestamp='1392577232', to_timestamp='1422577232'))
