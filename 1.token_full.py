@@ -40,38 +40,38 @@ top50_df = pd.DataFrame()
 for token in top50:
     new_df = pd.json_normalize(cg.get_coin_by_id(id=token, localization='false'))[coin_fields]
     top50_df = top50_df.append(new_df)
-    print(top50_df)
+print(top50_df)
 
 time.sleep(60)
 df_100 = pd.DataFrame()
 for token in t50_100:
     new_df = pd.json_normalize(cg.get_coin_by_id(id=token, localization='false'))[coin_fields]
     df_100 = df_100.append(new_df)
-    print(df_100)
+print(df_100)
 
 time.sleep(60)
 df_150 = pd.DataFrame()
 for token in t101_150:
     new_df = pd.json_normalize(cg.get_coin_by_id(id=token, localization='false'))[coin_fields]
     df_150 = df_150.append(new_df)
-    print(df_150)
+print(df_150)
 
 time.sleep(60)
 df_200 = pd.DataFrame()
 for token in t150_200:
     new_df = pd.json_normalize(cg.get_coin_by_id(id=token, localization='false'))[coin_fields]
     df_200 = df_200.append(new_df)
-    print(df_200)
+print(df_200)
 
 time.sleep(60)
 df_250 = pd.DataFrame()
 for token in t200_250:
     new_df = pd.json_normalize(cg.get_coin_by_id(id=token, localization='false'))[coin_fields]
     df_250 = df_250.append(new_df)
-    print(df_250)
+print(df_250)
 
 coin_df = pd.concat([top50_df,df_100,df_150,df_200,df_250])
-print(coin_df)
+#print(coin_df)
 
 coin_df.to_excel('crypto_data.xlsx',sheet_name='token_data')
 ## END: Top 50 Tokens Daily Market Metrics
