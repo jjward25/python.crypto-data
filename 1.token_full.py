@@ -19,9 +19,9 @@ dataset = pd.DataFrame(top500)
 top50 = dataset['id'][0:50]
 t50_100 = dataset['id'][50:100]
 t101_150 = dataset['id'][100:150]
-t150_200 = dataset['id'][150:200]
-t200_250 = dataset['id'][200:250]
-
+t151_200 = dataset['id'][150:200]
+t201_250 = dataset['id'][200:250]
+time.sleep(90)
 
 ## Loop for Token Data
 coin_fields = ["id", "symbol","name","asset_platform_id","block_time_in_minutes","hashing_algorithm","categories","public_notice","description.en",  ## general info
@@ -36,41 +36,45 @@ coin_fields = ["id", "symbol","name","asset_platform_id","block_time_in_minutes"
                 "community_data.reddit_subscribers","community_data.reddit_accounts_active_48h","community_data.telegram_channel_user_count", ## social data
                 "developer_data.forks","developer_data.stars","developer_data.subscribers","developer_data.total_issues","developer_data.closed_issues","developer_data.pull_requests_merged", ## developer data
                 "developer_data.pull_request_contributors","developer_data.commit_count_4_weeks"] ## developer data
-top50_df = pd.DataFrame()
+df50 = pd.DataFrame()
 for token in top50:
     new_df = pd.json_normalize(cg.get_coin_by_id(id=token, localization='false'))[coin_fields]
-    top50_df = top50_df.append(new_df)
-print(top50_df)
+    df50 = df50.append(new_df)
+print(df50)
 
-time.sleep(60)
+time.sleep(90)
+
 df_100 = pd.DataFrame()
 for token in t50_100:
     new_df = pd.json_normalize(cg.get_coin_by_id(id=token, localization='false'))[coin_fields]
     df_100 = df_100.append(new_df)
 print(df_100)
 
-time.sleep(60)
+time.sleep(90)
+
 df_150 = pd.DataFrame()
 for token in t101_150:
     new_df = pd.json_normalize(cg.get_coin_by_id(id=token, localization='false'))[coin_fields]
     df_150 = df_150.append(new_df)
 print(df_150)
 
-time.sleep(60)
+time.sleep(90)
+
 df_200 = pd.DataFrame()
-for token in t150_200:
+for token in t151_200:
     new_df = pd.json_normalize(cg.get_coin_by_id(id=token, localization='false'))[coin_fields]
     df_200 = df_200.append(new_df)
 print(df_200)
 
-time.sleep(60)
+time.sleep(90)
+
 df_250 = pd.DataFrame()
-for token in t200_250:
+for token in t201_250:
     new_df = pd.json_normalize(cg.get_coin_by_id(id=token, localization='false'))[coin_fields]
     df_250 = df_250.append(new_df)
 print(df_250)
 
-coin_df = pd.concat([top50_df,df_100,df_150,df_200,df_250])
+coin_df = pd.concat([df50,df_100,df_150,df_200,df_250])
 #print(coin_df)
 
 coin_df.to_excel('crypto_data.xlsx',sheet_name='token_data')
