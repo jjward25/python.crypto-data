@@ -1,5 +1,4 @@
 import pandas as pd
-import openpyxl
 import requests
 from pycoingecko import CoinGeckoAPI
 import time
