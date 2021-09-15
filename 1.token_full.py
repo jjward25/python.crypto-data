@@ -2,9 +2,17 @@ import pandas as pd
 import requests
 from pycoingecko import CoinGeckoAPI
 import time
+import sqlite3 as sql
+import matplotlib.pyplot as plt
+
+#### SQL Details
+conn = sql.connect('top250')
+c = conn.cursor()
+c.execute('CREATE TABLE IF NOT EXISTS top250 (id, symbol,name,asset_platform_id,block_time_in_minutes,hashing_algorithm,categories,public_notice,description,homepage,github,genesis_date,sentiment_votes_up_percentage,sentiment_votes_down_percentage,market_cap_rank,developer_score, community_score,liquidity_score,public_interest_score,current_price, ath, ath_change_percentage,atl_date,atl,atl_change_percentage, market_cap,total_volume,high_24h,low_24h,price_change_24h,price_change_percentage_24h,price_change_percentage_7d,price_change_percentage_14d, price_change_percentage_30d,price_change_percentage_60d,price_change_percentage_200d,price_change_percentage_1y, market_cap_change_24h,market_cap_change_percentage_24h,total_supply,max_supply,circulating_supply,facebook_likes,twitter_followers,reddit_average_posts_48h,reddit_average_comments_48h,reddit_subscribers,reddit_accounts_active_48h,telegram_channel_user_count,forks,stars,subscribers,total_issues,closed_issues,pull_requests_merged,pull_request_contributors,commit_count_4_weeks)')
+conn.commit()
+
 
 cg = CoinGeckoAPI()
-
 #### START: Top 500 Tokens Daily Market Metrics: to edit the # pulled, change the per_page and page= values in the links
 top250 = requests.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1').json()
 next250 = requests.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=2').json()
@@ -75,7 +83,16 @@ print(df_250)
 
 coin_df = pd.concat([df50,df_100,df_150,df_200,df_250])
 #print(coin_df)
-
 coin_df.to_excel('crypto_data.xlsx',sheet_name='token_data')
 ## END: Top 50 Tokens Daily Market Metrics
 
+## SQL Update
+new_df = coin_df.applymap(str) 
+new_df.columns = ['id', 'symbol','name','asset_platform_id','block_time_in_minutes','hashing_algorithm','categories','public_notice','description','homepage','github','genesis_date','sentiment_votes_up_percentage','sentiment_votes_down_percentage','market_cap_rank','developer_score','community_score','liquidity_score','public_interest_score','current_price','ath','ath_change_percentage','atl_date','atl','atl_change_percentage','market_cap','total_volume','high_24h','low_24h','price_change_24h','price_change_percentage_24h','price_change_percentage_7d','price_change_percentage_14d','price_change_percentage_30d','price_change_percentage_60d','price_change_percentage_200d','price_change_percentage_1y','market_cap_change_24h','market_cap_change_percentage_24h','total_supply','max_supply','circulating_supply','facebook_likes','twitter_followers','reddit_average_posts_48h','reddit_average_comments_48h','reddit_subscribers','reddit_accounts_active_48h','telegram_channel_user_count','forks','stars','subscribers','total_issues','closed_issues','pull_requests_merged','pull_request_contributors','commit_count_4_weeks']
+new_df.to_sql('top250',conn,if_exists='replace',index=False)
+# SQL Check
+#c.execute('''  
+#SELECT * FROM top250
+#          ''')
+#for row in c.fetchall():
+#    print (row)
